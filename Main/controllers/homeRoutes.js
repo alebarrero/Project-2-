@@ -15,7 +15,8 @@ router.get('/', async (req, res) => {
     });
 
     // Serialize data so the template can read it
-    const interests = interestsData.map((interests) => interests.get({ plain: true }));
+    const movieInterests = interestData.filter(interest => interest.category === "movie")
+
 
     // Pass serialized data and session flag into template
     res.render('homepage', { 
