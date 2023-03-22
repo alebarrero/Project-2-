@@ -1,0 +1,26 @@
+[
+  {
+    "name": "diamonds",
+    "description": "Rihanna",
+    "id":,//connects to user
+    "interest": "music"
+  },
+  {
+    "name": "chica",
+    "description": "very pretentious chic place in miami but damn their drinks rock",
+    "id":,
+    "interest": "restaurants"
+  },
+  {
+    "name": "beyonce",
+    "description": "miami arena august 2023",
+    "id":,
+    "interest": "concerts"
+  },
+  {
+    "name": "Skinamarink",
+    "description": "experimental horro film",
+    "id":,
+    "interest": "movies"
+  }
+]
