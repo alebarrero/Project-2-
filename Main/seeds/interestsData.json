@@ -3,24 +3,40 @@
     "name": "diamonds",
     "description": "Rihanna",
     "id":,//connects to user
-    "interest": "music"
+    "category": "music"
+    "user_id":,
   },
   {
     "name": "chica",
     "description": "very pretentious chic place in miami but damn their drinks rock",
     "id":,
-    "interest": "restaurants"
+    "category": "restaurants"
+    "user_id":,
   },
   {
     "name": "beyonce",
     "description": "miami arena august 2023",
     "id":,
-    "interest": "concerts"
+    "category": "concerts"
+    "user_id":,
   },
   {
     "name": "Skinamarink",
     "description": "experimental horro film",
     "id":,
-    "interest": "movies"
+    "category": "movies"
+    "user_id":,
   }
 ]
+
+
+// INSERT INTO users (name, email, password)
+// VALUES ('Sal', 'sal@hotmail.com', 'password12345'),
+//        ('Lernantino', 'lernantino@gmail.com', 'password12345'),
+//        ('Amiko', 'amiko2k20@aol.com', 'password12345');
+
+// INSERT INTO interests (name, description, category, user_id)
+// VALUES ('diamonds', 'Rihanna', 'music', 1),
+//        ('chica', 'very pretentious chic place in miami but damn their drinks rock', 'restaurants', 2),
+//        ('beyonce', 'miami arena august 2023', 'concerts', 3),
+//        ('Skinamarink', 'experimental horro film', 'movies', 1);

@@ -18,6 +18,10 @@ interests.init(
     description: {
       type: DataTypes.STRING,
     },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     // date_created: {
     //   type: DataTypes.DATE,
     //   allowNull: false,
