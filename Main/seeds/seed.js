@@ -1,9 +1,9 @@
 const sequelize = require('../config/connection');
-const { User, interests } = require('../models');
-
+const { User, Interests } = require('../models');
+console.log(Interests)
 const userData = require('./userData.json');
 const interestsData = require('./interestsData.json');
-
+console.log(interestsData.length,"line 4")
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
@@ -13,13 +13,13 @@ const seedDatabase = async () => {
   });
 
   for (const interests of interestsData) {
-    await interests.create({
+    await Interests.create({
       ...interests,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
+      userid: users[Math.floor(Math.random() * users.length)].id,
     });
-  }
-
+}
   process.exit(0);
+
 };
 
 seedDatabase();
