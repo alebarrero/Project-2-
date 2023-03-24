@@ -1,6 +1,26 @@
 const router = require('express').Router();
-const { Project } = require('../../models');
+const { User, Interests } = require('../../models');
 const withAuth = require('../../utils/auth');
+
+router.get('/', async (req, res) => {
+  try{
+    const interestsData = await Interests.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    // Serialize data so the template can read it
+    const projects = interestsData.map((project) => project.get({ plain: true }));
+    const movies = projects.filter(sav => sav.category == 'movies');
+    console.log(movies)
+  } catch(error){ 
+    if(error) console.log(error)
+  };
+})
 
 router.post('/', withAuth, async (req, res) => {
   try {
