@@ -27,22 +27,6 @@ Interests.init(
         key:"id"
       }
     }
-    // date_created: {
-    //   type: DataTypes.DATE,
-    //   allowNull: false,
-    //   defaultValue: DataTypes.NOW,
-    // },
-    // needed_funding: {
-    //   type: DataTypes.FLOAT,
-    //   allowNull: false,
-    // },
-    // user_id: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: 'user',
-    //     key: 'id',
-    //   },
-    // },
   },
   {
     sequelize,
