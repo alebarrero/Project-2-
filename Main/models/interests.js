@@ -20,7 +20,7 @@ Interests.init(
     category: {
       type: DataTypes.STRING,
     },
-    userid:{
+    userId:{
       type: DataTypes.INTEGER,
       references: {
         model:"User",
