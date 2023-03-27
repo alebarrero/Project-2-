@@ -1,9 +1,9 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes, INTEGER } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class interests extends Model {}
+class Interests extends Model {}
 
-interests.init(
+Interests.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,17 +11,22 @@ interests.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
+    savs: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     description: {
       type: DataTypes.STRING,
     },
     category: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
+    userid:{
+      type: DataTypes.INTEGER,
+      references: {
+        model:"User",
+        key:"id"
+      }
+    }
     // date_created: {
     //   type: DataTypes.DATE,
     //   allowNull: false,
@@ -44,8 +49,8 @@ interests.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'interests',
+    modelName: 'interest',
   }
 );
 
-module.exports = interests;
+module.exports = Interests;
