@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
     // Serialize data so the template can read it
     const projects = interestsData.map((project) => project.get({ plain: true }));
     const movies = projects.filter(sav => sav.category == 'movies');
-    console.log(movies)
+    
   } catch(error){ 
     if(error) console.log(error)
   };
