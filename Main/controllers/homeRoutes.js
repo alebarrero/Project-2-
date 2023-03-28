@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const { interests, User } = require('../models');
+const { Interests, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
     // Get all interests and JOIN with user data
-    const interestsData = await interests.findAll({
+    const interestsData = await Interests.findAll({
       include: [
         {
           model: User,
@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
     res.render('homepage', { 
       interests
 , 
-      logged_in: req.session.logged_in 
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -55,18 +55,31 @@ router.get('/interests/:id', async (req, res) => {
 router.get('/homepage', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: interests }],
+
+    const interestsData = await Interests.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
     });
 
-    const user = userData.get({ plain: true });
-    console.log(user)
-    // res.render('homepage', {
-    //   ...user,
-    //   logged_in: true
+    const interests = interestsData.map((project) => project.get({ plain: true }));
+    console.log (interests);
+    // const userData = await User.findByPk(req.session.user_id, {
+    //   attributes: { exclude: ['password'] },
+    //   include: [{ model: Interests }],
     // });
-    res.render('homepage');
+
+    // const user = userData.get({ plain: true });
+    // console.log(user);
+    
+    res.render('homepage', {
+      interests,
+      logged_in: req.session.logged_in
+    });
+
   } catch (err) {
     res.status(500).json(err);
   }
