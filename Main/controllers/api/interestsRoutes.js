@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, Interests } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/:category', async (req, res) => {
   try{
     const interestsData = await Interests.findAll({
       include: [

@@ -22,8 +22,14 @@
   </div>
 </div>
 {{/each}} --}}
-
+{{!-- {{log interests}} --}}
 {{#each interests as |interest| }}
-<p>{{interest.category}}</p>
+{{> interestlink }}
+{{log interest.category}}
+
+{{!-- {{#if interest.category}}
+<h1>{{firstName}} {{lastName}}</h1>
+{{/if}} --}}
+
 {{/each}}
 <p>Please work</p>
