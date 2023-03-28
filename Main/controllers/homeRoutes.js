@@ -55,8 +55,10 @@ router.get('/interests/:id', async (req, res) => {
 router.get('/homepage', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
-
-    const interestsData = await Interests.findAll({
+    console.log(req.session.user_id);
+    const interestsData = await Interests.findAll(
+      
+      {where: {userId : req.session.user_id},
       include: [
         {
           model: User,
@@ -95,5 +97,40 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
+
+
+
+
+
+
+router.get('/category/', async (req, res) => {
+  try {
+    const interestsData = await interests.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    const interests = interestsData.get({ plain: true });
+
+    res.render('interests', {
+      ...interests,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+
+
+
+
+
 
 module.exports = router;
