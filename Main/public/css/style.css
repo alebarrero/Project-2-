@@ -22,3 +22,17 @@ header, .project:not(:last-child) {
   font-weight: bold;
   margin-left: -5px;
 }
+
+.buttons{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn{
+  width: 200px;
+  background-color: #FFE5AD;
+  margin: 5px;
+  border: 3px solid black
+}

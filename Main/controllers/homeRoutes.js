@@ -150,7 +150,10 @@ router.get('/category/', async (req, res) => {
   }
 });
 
-
+//list
+router.get('/list', async (req, res) => {
+  res.render('seesavslist')
+})
 
 
 
