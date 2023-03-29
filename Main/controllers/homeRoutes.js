@@ -111,12 +111,13 @@ router.get('/category/:id', withAuth, async (req, res) => {
           attributes: ['name'],
         },
       ],
+      
     });
 
     const interests = interestsData.map((project) => project.get({ plain: true }));
     console.log (interests);
     
-    res.render('homepage', {
+    res.render('categories', {
       interests,
       logged_in: req.session.logged_in
     });
