@@ -2,10 +2,38 @@ const router = require('express').Router();
 const { Interests, User } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
-  try {
-    // Get all interests and JOIN with user data
+// router.get('/', async (req, res) => {
+//   try {
+//     // Get all interests and JOIN with user data
+//     const interestsData = await Interests.findAll({
+//       include: [
+//         {
+//           model: User,
+//           attributes: ['name'],
+//         },
+//       ],
+//     });
+
+//     // Serialize data so the template can read it
+//     const movieInterests = interestData.filter(interest => interest.category === "movie")
+
+
+//     // Pass serialized data and session flag into template
+//     res.render('homepage', { 
+//       interests
+// , 
+//       logged_in: req.session.logged_in
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+router.get('/actualsavs', async (req, res) => {
+  try{
     const interestsData = await Interests.findAll({
+      raw:true,
+      where: { userId: req.session.user_id, },
       include: [
         {
           model: User,
@@ -13,21 +41,21 @@ router.get('/', async (req, res) => {
         },
       ],
     });
+console.log(interestsData)
 
     // Serialize data so the template can read it
-    const movieInterests = interestData.filter(interest => interest.category === "movie")
-
-
-    // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      interests
+    // const projects = interestsData.map((project) => project.get({ plain: true }));
+    // const movies = projects.filter(sav => sav.category == 'movies');
+    res.render('actualsavs', { 
+      interestsData
 , 
       logged_in: req.session.logged_in
     });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+
+  } catch(error){ 
+    if(error) console.log(error)
+  };
+})
 
 router.get('/interests/:id', async (req, res) => {
   try {
@@ -149,7 +177,10 @@ router.get('/category/', async (req, res) => {
   }
 });
 
-
+//list
+router.get('/list', async (req, res) => {
+  res.render('seesavslist')
+})
 
 
 
