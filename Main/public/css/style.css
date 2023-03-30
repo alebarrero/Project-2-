@@ -2,6 +2,48 @@ header, .project:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
 
+header{
+  border-bottom: 0px solid #ccc;
+}
+body{
+  background-color: #16161a;
+  color: #FFE5AD;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 650px;
+  padding: 5%;
+}
+
+h1, nav{
+  width: 650px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 650px;
+}
+
+main{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+ }
+
+ #middle {    
+  justify-content: center;
+ }
+
+ .col-md-12{
+  float: center;
+  margin:20px;
+ }
+.row{
+  float:center;
+}
+
 .no-button {
   background: none;
   border: none;
@@ -35,4 +77,25 @@ header, .project:not(:last-child) {
   background-color: #FFE5AD;
   margin: 5px;
   border: 3px solid black
+}
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: auto;
+}
+
+.container-fluid {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+header, main, footer {
+  width: 100%;
+  text-align: center;
 }
