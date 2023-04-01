@@ -29,7 +29,7 @@ const withAuth = require('../utils/auth');
 //   }
 // });
 
-router.get('/actualsavs', async (req, res) => {
+router.get('/actualsavs', withAuth, async (req, res) => {
   try{
     const interestsData = await Interests.findAll({
       raw:true,
@@ -47,7 +47,7 @@ console.log(interestsData)
     // const projects = interestsData.map((project) => project.get({ plain: true }));
     // const movies = projects.filter(sav => sav.category == 'movies');
     res.render('actualsavs', { 
-      interestsData
+      interests: interestsData
 , 
       logged_in: req.session.logged_in
     });
@@ -59,7 +59,7 @@ console.log(interestsData)
 
 router.get('/interests/:id', async (req, res) => {
   try {
-    const interestsData = await interests.findByPk(req.params.id, {
+    const interestsData = await Interests.findByPk(req.params.id, {
       include: [
         {
           model: User,
