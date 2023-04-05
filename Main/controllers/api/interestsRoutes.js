@@ -2,10 +2,9 @@ const router = require('express').Router();
 const { User, Interests } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/',withAuth, async (req, res) => {
   try{
     const interestsData = await Interests.findAll({
-      plain:true,
       where: { userId: req.session.user_id, },
       include: [
         {
@@ -14,13 +13,17 @@ router.get('/', async (req, res) => {
         },
       ],
     });
-console.log(interestsData)
+
+    const interests = interestsData.map((gallery) =>
+      gallery.get({ plain: true })
+    )
 
     // Serialize data so the template can read it
     // const projects = interestsData.map((project) => project.get({ plain: true }));
+    
     // const movies = projects.filter(sav => sav.category == 'movies');
     res.render('actualsavs', { 
-      interestsData
+      interests
 , 
       logged_in: req.session.logged_in
     });
