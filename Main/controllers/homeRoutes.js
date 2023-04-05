@@ -58,6 +58,7 @@ console.log(interestsData)
 })
 
 router.get('/interests/:id', async (req, res) => {
+
   try {
     const interestsData = await Interests.findByPk(req.params.id, {
       include: [
@@ -183,6 +184,31 @@ router.get('/list', async (req, res) => {
   res.render('seesavslist')
 })
 
+///
+router.get('/filtered/:category', withAuth, async (req, res) => {
+  console.log(req.params.category)
+  try{
+    const interestsData = await Interests.findAll({
+      raw:true,
+      where: { userId: req.session.user_id,category:req.params.category},
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    res.render('actualsavs', { 
+      interests: interestsData
+, 
+      logged_in: req.session.logged_in
+    });
+
+  } catch(error){ 
+    if(error) console.log(error)
+  };
+})
 
 
 
