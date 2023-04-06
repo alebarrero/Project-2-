@@ -1,11 +1,21 @@
-<!-- We are not counting the number of times we visit this page -->
-<!-- But we are showing the number of times we visited the homepage -->
 <section class="container">
   <section class="interest">
     <p>Category: {{category}}</p>
     <div class="interest-details">
       <h3>{{savs}}</h3>
       <p>{{description}}</p>
+
+      <button class="btn btn-primary" onclick="searchGoogle('{{savs}}')">Search For Your Sav Online!</button>
+
     </div>
   </section>
 </section>
+
+<script>
+  function searchGoogle(query) {
+    const url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+    window.open(url, '_blank');
+  }
+</script>
+
+
