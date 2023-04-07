@@ -18,10 +18,6 @@ router.get('/',withAuth, async (req, res) => {
       gallery.get({ plain: true })
     )
 
-    // Serialize data so the template can read it
-    // const projects = interestsData.map((project) => project.get({ plain: true }));
-    
-    // const movies = projects.filter(sav => sav.category == 'movies');
     res.render('actualsavs', { 
       interests
 , 
