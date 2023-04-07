@@ -11,18 +11,18 @@ movies.addEventListener("click",function(){
 
 concerts.addEventListener("click",function(){
     console.log("test")
-    // fetch("/movies")
+    // fetch("/concerts")
     window.location.href="/filtered/concerts"
 });
 
 restaurants.addEventListener("click",function(){
     console.log("test")
-    // fetch("/movies")
+    // fetch("/restaurants")
     window.location.href="/filtered/restaurants"
 });
 
 music.addEventListener("click",function(){
     console.log("test")
-    // fetch("/movies")
+    // fetch("/music")
     window.location.href="/filtered/music"
 });
